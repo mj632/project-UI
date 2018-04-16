@@ -1,0 +1,30 @@
+<div class="sign-up-template">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 col-sm-12">
+				<div class="alert alert-danger" role="alert" [hidden]="signUpErrorBanner">
+				  Something went wrong! Couldn't signed Up.
+				  Please Try again
+
+				</div>
+				<section>
+					<form novalidate [formGroup]="userForm" (ngSubmit) = "OnSubmit()">
+						<fieldset>
+							<div class="form-group">
+								<label>Email Address: </label>
+								<input type="email" class="form-control" name="uEmail" formControlName="uEmail" required>
+							</div>
+							<div class="form-group">
+								<label>Password: </label>
+								<input type="password" class="form-control" name="uPassword" formControlName="uPassword" required>
+							</div>
+						</fieldset>
+						<button type="submit" class="btn btn-secondary btn-lg btn-block" [disabled] = "!userForm.valid" >Sign Up</button>
+					</form>
+				</section>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>	
+</div>

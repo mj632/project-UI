@@ -1,0 +1,27 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/">
+    <img src="../../assets/brands/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Smart Order Service
+  </a>
+  <div *ngIf="isUserLoggedIn; then thenBlock; else elseBlock">this is ignored</div>
+  <ng-template #thenBlock>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-up">Prev. Order</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-up"><i class="fas fa-user-plus"></i>Profile</a>
+      </li>
+    </ul>
+  </ng-template>
+  <ng-template #elseBlock>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-up">Sign in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/sign-up"><i class="fas fa-user-plus"></i>Sign up</a>
+      </li>
+    </ul>
+  </ng-template>
+</nav>
