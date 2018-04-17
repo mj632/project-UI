@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UserDetails } from '../../app-beans/user.details';
 import { UserService } from '../../app-user/user/user.service';
-
+// import { LoaderComponent } from '../../app-components/loader/loader.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,8 +13,9 @@ export class DashboardComponent implements OnInit {
 
 	private users : UserDetails[];
 	title = 'Home';
-
-	constructor(private userservice:UserService, private titleService: Title) {}
+	private isLoading = true;
+	constructor(private userservice:UserService, private titleService: Title) {
+	}
 
 	ngOnInit() {
 		// this.getAllUsers();

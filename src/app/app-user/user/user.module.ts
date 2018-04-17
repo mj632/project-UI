@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { SignUpComponent } from '../../app-templates/sign-up/sign-up.component';
+import { SignInComponent } from '../../app-templates/sign-in/sign-in.component';
+import { UserProfileComponent } from '../../app-templates/user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -12,7 +14,9 @@ import { SignUpComponent } from '../../app-templates/sign-up/sign-up.component';
     ReactiveFormsModule
   ],
   declarations: [
-    SignUpComponent
+    SignUpComponent,
+    SignInComponent,
+    UserProfileComponent
 ]
 })
 export class UserModule { }

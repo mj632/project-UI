@@ -1,30 +1,82 @@
 <div class="sign-up-template">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6 col-sm-12">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 col-sm-12">
 				<div class="alert alert-danger" role="alert" [hidden]="signUpErrorBanner">
 				  Something went wrong! Couldn't signed Up.
 				  Please Try again
 
 				</div>
 				<section>
-					<form novalidate [formGroup]="userForm" (ngSubmit) = "OnSubmit()">
+					<form novalidate [formGroup]="userDetailsForm" (ngSubmit) = "OnSubmit()">
 						<fieldset>
-							<div class="form-group">
-								<label>Email Address: </label>
-								<input type="email" class="form-control" name="uEmail" formControlName="uEmail" required>
-							</div>
-							<div class="form-group">
-								<label>Password: </label>
-								<input type="password" class="form-control" name="uPassword" formControlName="uPassword" required>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label>First Name: </label>
+									<input type="name" class="form-control" name="fName" formControlName="fName" required>
+								</div>
+								<div class="col-md-6">
+									<label>Last Name: </label>
+									<input type="text" class="form-control" name="lName" formControlName="lName" required>
+								</div>
 							</div>
 						</fieldset>
-						<button type="submit" class="btn btn-secondary btn-lg btn-block" [disabled] = "!userForm.valid" >Sign Up</button>
+
+
+						<fieldset>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label>Date of Birth: </label>
+									<input type="Date" class="form-control" name="uDob" formControlName="uDob" required>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label>Address Line 1: </label>
+									<input type="text" class="form-control" name="uStreet1" formControlName="uStreet1" required>
+								</div>
+								<div class="col-md-6">
+									<label>Address Line 2: </label>
+									<input type="text" class="form-control" name="uStreet1" formControlName="uStreet2" required>
+								</div>
+							</div>
+						</fieldset>
+
+
+						<fieldset>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label>Zip Code: </label>
+									<input type="Number" class="form-control" name="uPin" formControlName="uPin" required>
+								</div>
+								<div class="col-md-6">
+									<label>Contact: </label>
+									<input type="Number" class="form-control" name="uContact" formControlName="uContact" required>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label>Email Address: </label>
+									<input type="email" class="form-control" name="uEmail" formControlName="uEmail" required>
+								</div>
+								<div class="col-md-6">
+									<label>Password: </label>
+									<input type="password" class="form-control" name="uPassword" formControlName="uPassword" required>
+								</div>
+							</div>
+						</fieldset>
+						<button type="submit" class="btn btn-secondary btn-lg btn-block" [disabled] = "!userDetailsForm.valid" >Sign Up</button>
 					</form>
 				</section>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>	
 </div>

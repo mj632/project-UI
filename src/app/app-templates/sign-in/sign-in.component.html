@@ -1,0 +1,32 @@
+<div class="sign-in-template">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 col-sm-12">
+				<div class="alert alert-danger" role="alert" [hidden]="signInErrorBanner">
+				  Something went wrong! Couldn't signed Up.
+				  Please Try again
+
+				</div>
+				<section>
+					<form novalidate [formGroup]="userLogInForm" (ngSubmit) = "OnSubmit()">
+						<fieldset>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label>Email Address: </label>
+									<input type="email" class="form-control" name="uEmail" formControlName="uEmail" required>
+								</div>
+								<div class="col-md-6">
+									<label>Password: </label>
+									<input type="password" class="form-control" name="uPassword" formControlName="uPassword" required>
+								</div>
+							</div>
+						</fieldset>
+						<button type="submit" class="btn btn-secondary btn-lg btn-block" [disabled] = "!userLogInForm.valid" >Sign In</button>
+					</form>
+				</section>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>	
+</div>

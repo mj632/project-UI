@@ -16,10 +16,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SignUpComponent implements OnInit, OnDestroy {
 
 	user:UserDetails;
-	userForm:FormGroup;
+	userDetailsForm:FormGroup;
 	title = 'Sign Up';
-	signUpErrorBanner: Boolean
-	
+	signUpErrorBanner: Boolean;
+
 	constructor(private route:ActivatedRoute,
 				private router:Router,
 				private userservice:UserService,
@@ -32,31 +32,41 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
 	ngOnInit() 
 	{
-		this.userForm 	= new FormGroup({
+		this.userDetailsForm 	= new FormGroup({
 			uEmail: new FormControl('', Validators.required),
-			uPassword: new FormControl('', Validators.required)
+			uPassword: new FormControl('', Validators.required),
+			fName: new FormControl('', Validators.required),
+			lName: new FormControl('', Validators.required),
+			uDob:new FormControl(null, Validators.required),
+			uStreet1:new FormControl('', Validators.required),
+			uStreet2:new FormControl('', Validators.required),
+			uPin:new FormControl(null, Validators.required),
+			uContact:new FormControl(null, Validators.required)
 		});
-		// console.log(this.userForm);
 	}
 
 	ngOnDestroy():void { }
 
 	OnSubmit() 
 	{
-		if(this.userForm.valid)
+
+		if(this.userDetailsForm.valid)
 		{
 			let user: UserDetails = new UserDetails(
 														null,
-														this.userForm.controls['uEmail'].value,
-														this.userForm.controls['uPassword'].value
+														this.userDetailsForm.controls['uEmail'].value,
+														this.userDetailsForm.controls['uPassword'].value,
+														this.userDetailsForm.controls['fName'].value + 
+														' ' + this.userDetailsForm.controls['lName'].value,
+														this.userDetailsForm.controls['uDob'].value,
+														this.userDetailsForm.controls['uStreet1'].value,
+														this.userDetailsForm.controls['uStreet2'].value,
+														this.userDetailsForm.controls['uPin'].value,
+														this.userDetailsForm.controls['uContact'].value
 													);
 			this.userservice.saveUser(user)
 				.subscribe( resp => this.checkResponse(resp));
 		}
-		this.userForm.reset({
-			uEmail: '',
-			uPassword: ''
-		});
 	}
 
 	checkResponse(resp:Map<String,String>)
@@ -75,6 +85,24 @@ export class SignUpComponent implements OnInit, OnDestroy {
 			  	this.signUpErrorBanner = false;
 				break;
 			}
-		}	
+		}
+
+		this.resetFormDetails();
+	}
+
+	resetFormDetails()
+	{
+		this.userDetailsForm.reset({
+			uEmail: '',
+			uPassword: '',
+			uName:'',
+			uDob: null,
+			uStreet1:'',
+			uStreet2:'',
+			uPin:null,
+			uContact:null
+
+		});
+
 	}
 }
